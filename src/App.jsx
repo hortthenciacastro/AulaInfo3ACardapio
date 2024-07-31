@@ -59,6 +59,12 @@ export default function App() {
         setPedidos([...listaPedidos, produto]);
     }
     console.table(listaPedidos);
+
+
+    const removeItem = (id)=>{
+        let listaAuxiliar = listaPedidos.filter((produto)=> produto.id !==id);
+        setPedidos(listaAuxiliar)
+    }
     return (
         <div className="bloco-principal" >
             <div className="bloco-produtos">
@@ -79,9 +85,12 @@ export default function App() {
             listaPedidos.map((produto)=>
             <table key={produto.id}>
               <tr>
-            <td>{produto.produtos}</td>
+            <td>{produto.item}</td>
             <td>{produto.preco}</td>
-           
+
+            <td>
+                <button onClick={()=> removeItem(produto.id)}>Remover</button>
+            </td>
             </tr>
             </table>
             )
