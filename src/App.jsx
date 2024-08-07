@@ -62,9 +62,22 @@ export default function App() {
 
 
     const removeItem = (id)=>{
-        let listaAuxiliar = listaPedidos.filter((produto)=> produto.id !==id);
-        setPedidos(listaAuxiliar)
-    }
+        let remover = false;
+            let listaAuxiliar = listaPedidos.filter((pedido)=>
+            {
+                if(pedido.id == id){
+                   if (remover == false){
+                    remover = true
+                    return null
+                   }else{
+                    return pedido
+                   }
+            }else{
+                return pedido
+            }
+    });
+       setPedidos(listaAuxiliar); 
+}
     return (
         <div className="bloco-principal" >
             <div className="bloco-produtos">
@@ -98,4 +111,4 @@ export default function App() {
        </div>
     </div>
     );
-}
+    }
